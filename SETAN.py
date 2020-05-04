@@ -742,9 +742,9 @@ def menu_yahoo():
     os.system('clear')
     print logo
     print 40 * '\x1b[1;97m\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Dari teman facebook'
-    print '\x1b[1;37;40m2. Gunakan File'
-    print '\x1b[1;31;40m0. Kembali'
+    print '\x1b[1;37;40m1. From Facebook Friend List'
+    print '\x1b[1;37;40m2. Use File'
+    print '\x1b[1;31;40m0. Exit'
     print
     yahoo_pilih()
 
@@ -752,7 +752,7 @@ def menu_yahoo():
 def yahoo_pilih():
     go = raw_input('\x1b[1;91m-\xe2\x96\xba\x1b[1;97m ')
     if go == '':
-        print '\x1b[1;91m[!] Jangan kosong'
+        print '\x1b[1;91m[!] Please wait'
         yahoo_pilih()
     else:
         if go == '1':
@@ -773,7 +773,7 @@ def yahoofriends():
     try:
         toket = open('login.txt', 'r').read()
     except IOError:
-        print '\x1b[1;91m[!] Token tidak ditemukan'
+        print '\x1b[1;91m[!] Token not found'
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
@@ -783,7 +783,7 @@ def yahoofriends():
     print 40 * '\x1b[1;97m\xe2\x95\x90'
     mpsh = []
     jml = 0
-    jalan('\x1b[1;91m[\xe2\x9c\xba] \x1b[1;92mTunggu sebentar \x1b[1;97m...')
+    jalan('\x1b[1;91m[\xe2\x9c\xba] \x1b[1;92mWait a minute \x1b[1;97m...')
     teman = requests.get('https://graph.facebook.com/me/friends?access_token=' + toket)
     kimak = json.loads(teman.text)
     save = open('MailVuln.txt', 'w')
@@ -815,7 +815,7 @@ def yahoofriends():
                 if '"messages.ERROR_INVALID_USERNAME">' in pek:
                     save.write(mail + '\n')
                     print 40 * '\x1b[1;97m\xe2\x95\x90'
-                    print '\x1b[1;91m[\x1b[1;96m\xe2\x9c\x93\x1b[1;91m] \x1b[1;92mNama  \x1b[1;91m:\x1b[1;97m ' + nama
+                    print '\x1b[1;91m[\x1b[1;96m\xe2\x9c\x93\x1b[1;91m] \x1b[1;92mName  \x1b[1;91m:\x1b[1;97m ' + nama
                     print '\x1b[1;91m[\xe2\x9e\xb9] \x1b[1;92mID    \x1b[1;91m:\x1b[1;97m ' + id
                     print '\x1b[1;91m[\xe2\x9e\xb9] \x1b[1;92mEmail \x1b[1;91m:\x1b[1;97m ' + mail + ' [\x1b[1;92m' + vuln + '\x1b[1;97m]'
                     print 40 * '\x1b[1;97m\xe2\x95\x90'
@@ -824,10 +824,10 @@ def yahoofriends():
         except KeyError:
             pass
 
-    print '\n\x1b[1;91m[+] \x1b[1;97mSelesai'
-    print '\x1b[1;91m[+] \x1b[1;97mTersimpan \x1b[1;91m:\x1b[1;97m MailVuln.txt'
+    print '\n\x1b[1;91m[+] \x1b[1;97mDone'
+    print '\x1b[1;91m[+] \x1b[1;97mStored \x1b[1;91m:\x1b[1;97m MailVuln.txt'
     save.close()
-    raw_input('\n\x1b[1;91m[ \x1b[1;97mKembali \x1b[1;91m]')
+    raw_input('\n\x1b[1;91m[ \x1b[1;97mExit \x1b[1;91m]')
     menu_yahoo()
 
 
@@ -836,7 +836,7 @@ def yahoolist():
     try:
         toket = open('login.txt', 'r').read()
     except IOError:
-        print '\x1b[1;91m[!] Token tidak ditemukan'
+        print '\x1b[1;91m[!] Token not found'
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
@@ -849,13 +849,13 @@ def yahoolist():
             total = open(files, 'r')
             mail = total.readlines()
         except IOError:
-            print '\x1b[1;91m[!] File tidak ada'
-            raw_input('\n\x1b[1;91m[ \x1b[1;97mKembali \x1b[1;91m]')
+            print '\x1b[1;91m[!] File is missing'
+            raw_input('\n\x1b[1;91m[ \x1b[1;97mExit \x1b[1;91m]')
             menu_yahoo()
 
     mpsh = []
     jml = 0
-    jalan('\x1b[1;91m[\xe2\x9c\xba] \x1b[1;92mTunggu sebentar \x1b[1;97m...')
+    jalan('\x1b[1;91m[\xe2\x9c\xba] \x1b[1;92mWait a minute \x1b[1;97m...')
     save = open('MailVuln.txt', 'w')
     print 40 * '\x1b[1;97m\xe2\x95\x90'
     print '\x1b[1;91m[?] \x1b[1;97mStatus \x1b[1;91m:  \x1b[1;97mRed[\x1b[1;92m' + vulnot + '\x1b[1;97m]  Green[\x1b[1;92m' + vuln + '\x1b[1;97m]'
@@ -886,10 +886,10 @@ def yahoolist():
             else:
                 print '\x1b[1;91m ' + mail
 
-    print '\n\x1b[1;91m[+] \x1b[1;97mSelesai'
-    print '\x1b[1;91m[+] \x1b[1;97mTersimpan \x1b[1;91m:\x1b[1;97m MailVuln.txt'
+    print '\n\x1b[1;91m[+] \x1b[1;97mDone'
+    print '\x1b[1;91m[+] \x1b[1;97mStored \x1b[1;91m:\x1b[1;97m MailVuln.txt'
     save.close()
-    raw_input('\n\x1b[1;91m[ \x1b[1;97mKembali \x1b[1;91m]')
+    raw_input('\n\x1b[1;91m[ \x1b[1;97mExit \x1b[1;91m]')
     menu_yahoo()
 
 
@@ -898,7 +898,7 @@ def grab():
     try:
         toket = open('login.txt', 'r').read()
     except IOError:
-        print '\x1b[1;91m[!] Token tidak ditemukan'
+        print '\x1b[1;91m[!] Token not found'
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
@@ -906,8 +906,8 @@ def grab():
     os.system('clear')
     print logo
     print 40 * '\x1b[1;97m\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Ambil ID teman'
-    print '\x1b[1;37;40m2. Ambil ID teman dari teman'
+    print '\x1b[1;37;40m1. Hack a friend ID'
+    print '\x1b[1;37;40m2. Hack Friends of Friend ID'
     print '\x1b[1;37;40m3. Ambil ID member GRUP'
     print '\x1b[1;37;40m4. Ambil Email teman'
     print '\x1b[1;37;40m5. Ambil Email teman dari teman'
